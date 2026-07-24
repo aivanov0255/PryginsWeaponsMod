@@ -432,7 +432,7 @@ public class ModItems {
     );
 
     public static Item LEAF_BLOWER = register(
-            "leaf_blower",
+            "leafblower",
             LeafBlower::new,
             new Item.Properties().stacksTo(1)
     );

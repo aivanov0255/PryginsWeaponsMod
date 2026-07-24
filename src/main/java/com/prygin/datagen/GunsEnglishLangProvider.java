@@ -47,6 +47,7 @@ public class GunsEnglishLangProvider extends FabricLanguageProvider {
         translationBuilder.add("item.guns.shulker_bullet", "Shulker Bullet");
 
         translationBuilder.add("item.guns.taser", "Taser");
+        translationBuilder.add("item.guns.leafblower", "Leaf Blower");
 
         translationBuilder.add("item.guns.zombie_scythe", "Zombie Scythe");
         translationBuilder.add("item.guns.cane", "Cane");

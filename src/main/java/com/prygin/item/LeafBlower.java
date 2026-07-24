@@ -65,15 +65,14 @@ public class LeafBlower extends Item implements Chargable{
         itemStack.set(ModComponents.AMMO, itemStack.get(ModComponents.AMMO) - 1);
 
         Vec3 startPos = owner.getEyePosition();
-        Vec3 endPos = owner.getEyePosition().add(owner.getLookAngle().scale(5));
+        Vec3 endPos = owner.getEyePosition().add(owner.getLookAngle().scale(10));
 
         HitResult hitResult = Guns.raycast(level, startPos, endPos, owner, new ArrayList<>());
 
         if (hitResult instanceof EntityHitResult entityHitResult) {
-            if (entityHitResult.getEntity() instanceof ServerPlayer player) {
-                ServerPlayNetworking.send(player, new ScreenShakePayload(5, 20));
+            if (entityHitResult.getEntity() instanceof LivingEntity) {
+                entityHitResult.getEntity().setDeltaMovement(owner.getLookAngle().scale(1));
             }
-            if (entityHitResult.getEntity() instanceof LivingEntity) entityHitResult.getEntity().hurtServer(level, owner.damageSources().mobAttack((LivingEntity) entityHitResult.getEntity()), 0.1f);
         }
     }
 
