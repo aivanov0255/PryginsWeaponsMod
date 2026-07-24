@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "   ",
+    "ici",
+    "iii"
+  ],
+  "key": {
+    "i": "minecraft:iron_ingot",
+    "c": "minecraft:lightning_rod"
+  },
+  "result": {
+    "id": "guns:recharger"
+  }
+}

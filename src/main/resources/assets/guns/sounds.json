@@ -1,0 +1,38 @@
+{
+  "pistol_shoot": {
+    "subtitle": "sound.guns.pistol",
+    "sounds": ["guns:pistol_shoot"]
+  },
+  "pistol_reload": {
+    "subtitle": "sound.guns.pistol_reload",
+    "sounds": ["guns:pistol_reload"]
+  },
+  "minigun_shoot": {
+    "subtitle": "sound.guns.minigun",
+    "sounds": ["guns:minigun_shoot"]
+  },
+  "watergun_shoot": {
+    "subtitle": "sound.guns.watergun",
+    "sounds": ["guns:watergun_shoot"]
+  },
+  "watergun_reload": {
+    "subtitle": "sound.guns.watergun_reload",
+    "sounds": ["guns:watergun_reload"]
+  },
+  "cyber_cannon_shoot": {
+    "subtitle": "sound.guns.cyber_cannon",
+    "sounds": ["guns:cyber_cannon_shoot"]
+  },
+  "ninja_star_hit": {
+    "subtitle": "sound.guns.ninja_star_hit",
+    "sounds": ["guns:ninja_star_hit"]
+  },
+  "rocket_launcher_shoot": {
+    "subtitle": "sound.guns.rocket_launcher_shoot",
+    "sounds": ["guns:rocket_launcher_shoot"]
+  },
+  "rocket_launcher_load": {
+    "subtitle": "sound.guns.rocket_launcher_load",
+    "sounds": ["guns:rocket_launcher_load"]
+  }
+}

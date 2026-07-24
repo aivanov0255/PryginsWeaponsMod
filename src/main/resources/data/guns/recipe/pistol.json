@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "iii",
+    "Ll "
+  ],
+  "key": {
+    "i": [
+      "minecraft:iron_ingot"
+    ],
+    "l": [
+      "minecraft:lever"
+    ],
+    "L": [
+      "minecraft:leather",
+      "minecraft:rabbit_hide"
+    ]
+  },
+  "result": {
+    "id": "guns:pistol",
+    "count": 1
+  },
+  "show_notification": true
+}

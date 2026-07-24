@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "minecraft:pale_oak_planks",
+  "result": {
+    "id": "guns:pale_oak_floor_board"
+  }
+}

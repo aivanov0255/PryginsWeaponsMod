@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "guns:block/ammo_bench",
+      "y": -90
+    },
+    "facing=east": {
+      "model": "guns:block/ammo_bench"
+    },
+    "facing=south": {
+      "model": "guns:block/ammo_bench",
+      "y": 90
+    },
+    "facing=west": {
+      "model": "guns:block/ammo_bench",
+      "y": 180
+    }
+  }
+}

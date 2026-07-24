@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "  c",
+    " c ",
+    "g  "
+  ],
+  "key": {
+    "g": "minecraft:gold_ingot",
+    "c": "minecraft:copper_nugget"
+  },
+  "result": {
+    "id": "guns:sniper_ammo",
+    "count": 8
+  }
+}

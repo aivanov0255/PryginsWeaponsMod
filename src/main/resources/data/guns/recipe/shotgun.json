@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "lii",
+    "lLl",
+    "   "
+  ],
+  "key": {
+    "i": "minecraft:iron_ingot",
+    "l": [
+      "minecraft:leather",
+      "minecraft:rabbit_hide"
+    ],
+    "L": "minecraft:lever"
+  },
+  "result": {
+    "id": "guns:shotgun"
+  }
+}

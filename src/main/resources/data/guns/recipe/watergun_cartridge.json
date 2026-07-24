@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    " g ",
+    "g g",
+    " g "
+  ],
+  "key": {
+    "g": "minecraft:glass"
+  },
+  "result": {
+    "id": "guns:watergun_cartridge",
+    "count": 1
+  },
+  "show_notification": true
+}

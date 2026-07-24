@@ -1,0 +1,32 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "t  ",
+    "icc"
+  ],
+  "key": {
+    "i": [
+      "minecraft:iron_ingot"
+    ],
+    "c": [
+      "minecraft:iron_chain",
+      "minecraft:exposed_copper_chain",
+      "minecraft:copper_chain",
+      "minecraft:oxidized_copper_chain",
+      "minecraft:waxed_copper_chain",
+      "minecraft:waxed_exposed_copper_chain",
+      "minecraft:waxed_oxidized_copper_chain",
+      "minecraft:waxed_weathered_copper_chain",
+      "minecraft:weathered_copper_chain"
+    ],
+    "t": [
+      "minecraft:tripwire_hook"
+    ]
+  },
+  "result": {
+    "id": "guns:mini_gun",
+    "count": 1
+  },
+  "show_notification": true
+}

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "iIi",
+    " s ",
+    " s "
+  ],
+  "key": {
+    "s": "minecraft:stick",
+    "i": "minecraft:iron_block",
+    "I": "minecraft:iron_ingot"
+  },
+  "ingredients": [
+    "s"
+  ],
+  "result": {
+    "id": "guns:battle_axe"
+  }
+}

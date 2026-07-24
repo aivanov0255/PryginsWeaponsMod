@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "ng ",
+    "gi "
+  ],
+  "key": {
+    "n": [
+      "minecraft:gold_nugget"
+    ],
+    "i": [
+      "minecraft:gold_ingot"
+    ],
+    "g": [
+      "minecraft:gunpowder"
+    ]
+  },
+  "result": {
+    "id": "guns:minigun_ammo",
+    "count": 12
+  },
+  "show_notification": true
+}

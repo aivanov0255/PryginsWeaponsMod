@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "minecraft:warped_planks",
+  "result": {
+    "id": "guns:warped_floor_board"
+  }
+}

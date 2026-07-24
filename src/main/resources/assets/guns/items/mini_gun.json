@@ -1,0 +1,11 @@
+{
+  "model": {
+    "type": "minecraft:special",
+    "base": "guns:item/mini_gun",
+    "model": {
+      "type": "geckolib:geckolib"
+    }
+  },
+  "hand_animation_on_swap": false,
+  "oversized_in_gui": false
+}

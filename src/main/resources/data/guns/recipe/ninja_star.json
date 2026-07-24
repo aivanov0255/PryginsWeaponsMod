@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    " n ",
+    "nin",
+    " n "
+  ],
+  "key": {
+    "n": [
+      "minecraft:copper_nugget",
+      "minecraft:gold_nugget",
+      "minecraft:iron_nugget"
+    ],
+    "i": [
+      "minecraft:copper_ingot",
+      "minecraft:iron_ingot",
+      "minecraft:gold_ingot"
+    ]
+  },
+  "result": {
+    "id": "guns:ninja_star",
+    "count": 1
+  },
+  "show_notification": true
+}

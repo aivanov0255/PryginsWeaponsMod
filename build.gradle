@@ -1,0 +1,116 @@
+plugins {
+	id 'net.fabricmc.fabric-loom' version "${loom_version}"
+	id 'com.gradleup.shadow' version '8.3.11'
+	id 'maven-publish'
+}
+
+version = project.mod_version
+group = project.maven_group
+
+repositories {
+	mavenCentral()
+	maven {
+		url = "https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/"
+	}
+}
+
+fabricApi {
+	configureDataGeneration {
+		client = true
+	}
+}
+
+configurations {
+	// Dependencies declared here get fully resolved (including their
+	// transitive dependencies) and bundled into the final jar by shadowJar.
+	shadowOnly
+}
+
+// Makes shadowOnly's dependencies visible to javac and to
+// ./gradlew runClient / runServer, in addition to being bundled by shadowJar.
+configurations.implementation.extendsFrom(configurations.shadowOnly)
+
+dependencies {
+	// To change the versions see the gradle.properties file
+	minecraft "com.mojang:minecraft:${project.minecraft_version}"
+
+	implementation "net.fabricmc:fabric-loader:${project.loader_version}"
+
+	// Fabric API. This is technically optional, but you probably want it anyway.
+	implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+
+	implementation "com.geckolib:geckolib-fabric-${project.minecraft_version}:${project.geckolib_version}"
+
+	// Google Sheets stack — service-account auth only (see SheetsController),
+	// so no oauth-client-jetty / embedded browser-flow dependency needed.
+	shadowOnly 'com.google.api-client:google-api-client:2.8.1'
+	shadowOnly 'com.google.apis:google-api-services-sheets:v4-rev20250616-2.0.0'
+	shadowOnly 'com.google.auth:google-auth-library-oauth2-http:1.40.0'
+	shadowOnly 'com.google.http-client:google-http-client-gson:2.0.2'
+}
+
+processResources {
+	def version = project.version
+	inputs.property "version", version
+
+	filesMatching("fabric.mod.json") {
+		expand "version": version
+	}
+}
+
+tasks.withType(JavaCompile).configureEach {
+	it.options.release = 25
+}
+
+java {
+	// Loom will automatically attach sourcesJar to a RemapSourcesJar task and to the "build" task
+	// if it is present.
+	// If you remove this line, sources will not be generated.
+	withSourcesJar()
+
+	sourceCompatibility = JavaVersion.VERSION_25
+	targetCompatibility = JavaVersion.VERSION_25
+}
+
+// The plain jar — your compiled classes with NO bundled dependencies.
+// Not the jar you distribute; kept around mainly as shadowJar's base input.
+jar {
+	archiveClassifier.set('thin')
+}
+
+shadowJar {
+	configurations = [project.configurations.shadowOnly]
+
+	archiveClassifier.set('')
+
+	relocate 'com.google.common', 'com.playtest.shadow.guava'
+	relocate 'com.google.gson', 'com.playtest.shadow.gson'
+
+	def projectName = project.name
+	from("LICENSE") {
+		rename { "${it}_$projectName" }
+	}
+}
+
+// Make sure shadowJar actually gets built as part of a normal build,
+// since it isn't wired into assemble automatically.
+tasks.named('assemble') {
+	dependsOn(tasks.shadowJar)
+}
+
+// configure the maven publication
+publishing {
+	publications {
+		create("mavenJava", MavenPublication) {
+			from components.java
+		}
+	}
+
+	// See https://docs.gradle.org/current/userguide/publishing_maven.html for information on how to set up publishing.
+	repositories {
+		// Add repositories to publish to here.
+		// Notice: This block does NOT have the same function as the block in the top level.
+		// The repositories here will be used for publishing your artifact, not for
+		// retrieving dependencies.
+	}
+}

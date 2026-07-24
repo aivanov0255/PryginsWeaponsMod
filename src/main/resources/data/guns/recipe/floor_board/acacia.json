@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "minecraft:acacia_planks",
+  "result": {
+    "id": "guns:acacia_floor_board"
+  }
+}

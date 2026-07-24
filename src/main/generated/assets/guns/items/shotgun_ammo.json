@@ -1,0 +1,74 @@
+{
+  "model": {
+    "type": "minecraft:composite",
+    "models": [
+      {
+        "type": "minecraft:model",
+        "model": "guns:item/shotgun_ammo"
+      },
+      {
+        "type": "minecraft:range_dispatch",
+        "entries": [
+          {
+            "model": {
+              "type": "minecraft:model",
+              "model": "minecraft:block/air"
+            },
+            "threshold": 0.0
+          },
+          {
+            "model": {
+              "type": "minecraft:model",
+              "model": "guns:item/shotgun_overlay/explodes_1"
+            },
+            "threshold": 2.0
+          },
+          {
+            "model": {
+              "type": "minecraft:model",
+              "model": "guns:item/shotgun_overlay/explodes_2"
+            },
+            "threshold": 5.0
+          },
+          {
+            "model": {
+              "type": "minecraft:model",
+              "model": "guns:item/shotgun_overlay/explodes_3"
+            },
+            "threshold": 10.0
+          }
+        ],
+        "property": "guns:explosion_range"
+      },
+      {
+        "type": "minecraft:condition",
+        "on_false": {
+          "type": "minecraft:model",
+          "model": "minecraft:block/air"
+        },
+        "on_true": {
+          "type": "minecraft:model",
+          "model": "guns:item/shotgun_overlay/teleports_random"
+        },
+        "property": "guns:teleport_random"
+      },
+      {
+        "type": "minecraft:condition",
+        "on_false": {
+          "type": "minecraft:model",
+          "model": "minecraft:block/air"
+        },
+        "on_true": {
+          "type": "minecraft:model",
+          "model": "guns:item/shotgun_overlay/effect_instance",
+          "tints": [
+            {
+              "type": "guns:status_effect"
+            }
+          ]
+        },
+        "property": "guns:status_effect_exists"
+      }
+    ]
+  }
+}

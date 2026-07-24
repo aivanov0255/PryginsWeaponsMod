@@ -1,0 +1,57 @@
+{
+  "variants": {
+    "face=ceiling,facing=east": {
+      "model": "guns:block/ranged_detonator",
+      "x": 180,
+      "y": 270
+    },
+    "face=ceiling,facing=north": {
+      "model": "guns:block/ranged_detonator",
+      "x": 180,
+      "y": 180
+    },
+    "face=ceiling,facing=south": {
+      "model": "guns:block/ranged_detonator",
+      "x": 180
+    },
+    "face=ceiling,facing=west": {
+      "model": "guns:block/ranged_detonator",
+      "x": 180,
+      "y": 90
+    },
+    "face=floor,facing=east": {
+      "model": "guns:block/ranged_detonator",
+      "y": 90
+    },
+    "face=floor,facing=north": {
+      "model": "guns:block/ranged_detonator"
+    },
+    "face=floor,facing=south": {
+      "model": "guns:block/ranged_detonator",
+      "y": 180
+    },
+    "face=floor,facing=west": {
+      "model": "guns:block/ranged_detonator",
+      "y": 270
+    },
+    "face=wall,facing=east": {
+      "model": "guns:block/ranged_detonator",
+      "x": 90,
+      "y": 90
+    },
+    "face=wall,facing=north": {
+      "model": "guns:block/ranged_detonator",
+      "x": 90
+    },
+    "face=wall,facing=south": {
+      "model": "guns:block/ranged_detonator",
+      "x": 90,
+      "y": 180
+    },
+    "face=wall,facing=west": {
+      "model": "guns:block/ranged_detonator",
+      "x": 90,
+      "y": 270
+    }
+  }
+}

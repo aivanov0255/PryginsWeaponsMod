@@ -1,0 +1,8 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "guns:item/mob_trap"
+  },
+  "hand_animation_on_swap": false,
+  "oversized_in_gui": false
+}

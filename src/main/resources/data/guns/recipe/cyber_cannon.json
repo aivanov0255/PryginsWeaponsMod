@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    " r ",
+    "iIg",
+    "l  "
+  ],
+  "key": {
+    "r": "minecraft:repeater",
+    "i": "minecraft:iron_block",
+    "I": "minecraft:iron_ingot",
+    "g": "minecraft:red_stained_glass_pane",
+    "l": "minecraft:lever"
+  },
+  "result": {
+    "id": "guns:cyber_cannon",
+    "count": 1
+  },
+  "show_notification": true
+}

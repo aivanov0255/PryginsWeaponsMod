@@ -1,0 +1,25 @@
+{
+  "required": true,
+  "package": "com.prygin.mixin",
+  "compatibilityLevel": "JAVA_25",
+  "mixins": [
+    "GameRendererMixin",
+    "ZombieEmergeMixin",
+    "ZombieEmergeDataMixin",
+    "ZombieEmergeRendererMixin",
+    "ZombieRendererMixin",
+    "ZombieRenderStateMixin",
+    "AbstractClientPlayerMixin",
+    "CornerIconMixin",
+    "CameraMixin",
+    "ConditionalItemModelPropertiesAccessor",
+    "RangeSelectItemModelPropertiesAccessor",
+    "ItemTintSourcesAccessor"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
+	}
+}
