@@ -103,6 +103,7 @@ public class ModCreativeModeTabs {
                 output.accept(ModItems.BREEZE_BASHER);
 
                 output.accept(ModItems.TASER);
+                output.accept(ModItems.LEAF_BLOWER);
             })
             .build();
 

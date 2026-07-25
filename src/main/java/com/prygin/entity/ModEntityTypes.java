@@ -4,6 +4,7 @@ import com.prygin.Guns;
 import com.prygin.entity.battle_axe.BattleAxeEntity;
 import com.prygin.entity.missle.MissleEntity;
 import com.prygin.entity.nijastar.NinjaStarEntity;
+import com.prygin.entity.plane.Plane;
 import com.prygin.entity.scythe_zombie.ScytheZombie;
 import com.prygin.entity.shockwave.ShockwaveEntity;
 import com.prygin.item.ModItems;
@@ -135,6 +136,14 @@ public class ModEntityTypes {
     public static final EntityType<MissleEntity> MISSLE = register(
             "missle",
             EntityType.Builder.<MissleEntity>of(MissleEntity::new, MobCategory.AMBIENT).sized(1f, 1f)
+    );
+
+    public static final EntityType<Plane> PLANE = register(
+            "plane",
+            EntityType.Builder.<Plane>of(Plane::new, MobCategory.MISC)
+                    .sized(5, 5)
+                    .clientTrackingRange(10)
+                    .updateInterval(1)
     );
 
     private static <T extends Entity> EntityType<T> register(String name, EntityType.Builder<T> builder) {
