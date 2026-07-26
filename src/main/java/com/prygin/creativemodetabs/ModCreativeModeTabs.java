@@ -104,6 +104,7 @@ public class ModCreativeModeTabs {
 
                 output.accept(ModItems.TASER);
                 output.accept(ModItems.LEAF_BLOWER);
+                output.accept(ModItems.VACUUM);
             })
             .build();
 

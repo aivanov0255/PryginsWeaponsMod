@@ -436,6 +436,11 @@ public class ModItems {
             LeafBlower::new,
             new Item.Properties().stacksTo(1)
     );
+    public static Item VACUUM = register(
+            "vacuum",
+            Vacuum::new,
+            new Item.Properties().stacksTo(1)
+    );
 
     public static Item BOOMERANG = register(
             "boomerang",
