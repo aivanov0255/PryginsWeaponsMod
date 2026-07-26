@@ -43,8 +43,8 @@ public class BoomerangRenderer<R extends EntityRenderState & GeoRenderState, T e
         float startingRot = renderPassInfo.renderState().getOrDefaultGeckolibData(STARTING_ROTATION_TICKET, 0f);
 
         double angle = ticks * (2 * Math.PI / 40.0);
-        double x = 5 * Math.cos(angle + Math.PI/2) - 5 * Math.sin(startingRot);
-        double z = 5 * Math.sin(angle + Math.PI/2) - 5 * Math.cos(startingRot);
+        double x = 5 * Math.cos(-angle + startingRot + Math.PI/2) + 5 * Math.sin(startingRot);
+        double z = 5 * Math.sin(-angle + startingRot + Math.PI/2) - 5 * Math.cos(startingRot);
 
         poseStack.translate(x, 0, z);
 

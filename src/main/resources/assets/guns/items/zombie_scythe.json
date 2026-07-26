@@ -1,8 +1,0 @@
-{
-  "model": {
-    "type": "minecraft:model",
-    "model": "guns:item/zombie_sythe"
-  },
-  "hand_animation_on_swap": false,
-  "oversized_in_gui": false
-}

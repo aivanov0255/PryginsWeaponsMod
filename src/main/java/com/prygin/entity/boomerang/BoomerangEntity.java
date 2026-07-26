@@ -10,17 +10,22 @@ import com.geckolib.animation.object.PlayState;
 import com.geckolib.util.GeckoLibUtil;
 import com.prygin.entity.trap.AbstractTrap;
 import com.prygin.item.ModItems;
+import net.minecraft.core.BlockPos;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.DamageSources;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Pose;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
 import net.minecraft.world.phys.Vec3;
@@ -54,16 +59,26 @@ public class BoomerangEntity extends Entity implements GeoEntity {
         super.tick();
 
         if (!level().isClientSide()) {
+            if (!level().getBlockState(new BlockPos(getBlockX(), getBlockY(), getBlockZ())).is(Blocks.AIR)) {
+                discard();
+
+                level().addFreshEntity(new ItemEntity(level(), getX(), getY(), getZ(), new ItemStack(ModItems.BOOMERANG)));
+            }
+
+            for (Entity entity : level().getEntities(null, getBoundingBox())) {
+                if (entity instanceof LivingEntity livingEntity) entity.hurtServer((ServerLevel) level(), level().getEntity(getOwnerId()).damageSources().mobAttack(livingEntity), 5);
+            }
+
             Vec3 owner = new Vec3(0, 0, 0);
             try {
-                owner = level().getEntity(getOwnerId()).position();
+                owner = level().getEntity(getOwnerId()).getEyePosition();
             } catch (Exception e) {
                 discard();
             }
             double angle = tickCount * (2 * Math.PI / 40.0);
-            double x = owner.x() + 5 * Math.cos(angle + Math.PI / 2) - 5 * Math.sin(getStartingRot());
+            double x = owner.x() + 5 * Math.cos(-angle + getStartingRot() + Math.PI / 2) + 5 * Math.sin(getStartingRot());
             double y = owner.y();
-            double z = owner.z() + 5 * Math.sin(angle + Math.PI / 2) - 5 * Math.cos(getStartingRot());
+            double z = owner.z() + 5 * Math.sin(-angle + getStartingRot() + Math.PI / 2) - 5 * Math.cos(getStartingRot());
             this.setPos(x, y, z);
 
             if (tickCount >= 40) {

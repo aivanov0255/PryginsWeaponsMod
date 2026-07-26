@@ -23,6 +23,7 @@ import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.item.ItemModel;
 import net.minecraft.client.renderer.item.properties.conditional.Broken;
 import net.minecraft.client.renderer.item.properties.numeric.Count;
+import net.minecraft.client.renderer.item.properties.select.DisplayContext;
 import net.minecraft.client.renderer.item.properties.select.SelectItemModelProperties;
 import net.minecraft.client.renderer.item.properties.select.SelectItemModelProperty;
 import net.minecraft.client.resources.model.sprite.Material;
@@ -108,6 +109,20 @@ public class GunsModelProvider extends FabricModelProvider {
                         ItemModelUtils.plainModel(emptyModelId)
                 )
         ));
+
+        Identifier flatModel = itemModelGenerator.createFlatItemModel(ModItems.ZOMBIE_SCYTHE, ModelTemplates.FLAT_ITEM);
+
+        Identifier handModel = Identifier.fromNamespaceAndPath(Guns.MOD_ID, "item/zombie_scythe_hand");
+
+        itemModelGenerator.itemModelOutput.accept(
+                ModItems.ZOMBIE_SCYTHE,
+                ItemModelUtils.select(
+                        new DisplayContext(),
+                        ItemModelUtils.plainModel(handModel),
+                        ItemModelUtils.when(ItemDisplayContext.GUI, ItemModelUtils.plainModel(flatModel)),
+                        ItemModelUtils.when(ItemDisplayContext.FIXED, ItemModelUtils.plainModel(flatModel))
+                )
+        );
     }
 
     @Override

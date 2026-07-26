@@ -2,8 +2,8 @@
 	"format_version": "1.21.11",
 	"credit": "Made with Blockbench",
 	"textures": {
-		"1": "guns:item/zombie_scythe",
-		"particle": "guns:item/zombie_scythe"
+		"1": "guns:item/zombie_scythe_hand",
+		"particle": "guns:item/zombie_scythe_hand"
 	},
 	"elements": [
 		{
