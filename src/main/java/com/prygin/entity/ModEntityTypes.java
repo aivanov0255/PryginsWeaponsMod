@@ -151,7 +151,8 @@ public class ModEntityTypes {
             "boomerang",
             EntityType.Builder.<BoomerangEntity>of(BoomerangEntity::new, MobCategory.MISC)
                     .sized(1, 1)
-                    .clientTrackingRange(10)
+                    .updateInterval(1)
+                    .clientTrackingRange(64)
     );
 
     private static <T extends Entity> EntityType<T> register(String name, EntityType.Builder<T> builder) {

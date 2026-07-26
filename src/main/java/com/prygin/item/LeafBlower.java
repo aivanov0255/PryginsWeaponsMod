@@ -25,6 +25,7 @@ import net.minecraft.world.phys.Vec3;
 import org.jspecify.annotations.Nullable;
 
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.function.Consumer;
 
 public class LeafBlower extends Item implements Chargable{
@@ -36,7 +37,7 @@ public class LeafBlower extends Item implements Chargable{
     public void inventoryTick(ItemStack itemStack, ServerLevel level, Entity owner, @Nullable EquipmentSlot slot) {
         Integer charge = itemStack.get(ModComponents.AMMO);
 
-        if (isUsing(owner) && charge > 0) {
+        if (isUsing(owner) && charge > 0 && Objects.equals(owner.getWeaponItem(), itemStack)) {
             whileUsing(itemStack, level, owner);
         }
     }
