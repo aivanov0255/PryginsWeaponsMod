@@ -110,17 +110,45 @@ public class GunsModelProvider extends FabricModelProvider {
                 )
         ));
 
-        Identifier flatModel = itemModelGenerator.createFlatItemModel(ModItems.ZOMBIE_SCYTHE, ModelTemplates.FLAT_ITEM);
+        Identifier flatModelZombieScythe = itemModelGenerator.createFlatItemModel(ModItems.ZOMBIE_SCYTHE, ModelTemplates.FLAT_ITEM);
 
-        Identifier handModel = Identifier.fromNamespaceAndPath(Guns.MOD_ID, "item/zombie_scythe_hand");
+        Identifier handModelZombieScythe = Identifier.fromNamespaceAndPath(Guns.MOD_ID, "item/zombie_scythe_hand");
 
         itemModelGenerator.itemModelOutput.accept(
                 ModItems.ZOMBIE_SCYTHE,
                 ItemModelUtils.select(
                         new DisplayContext(),
-                        ItemModelUtils.plainModel(handModel),
-                        ItemModelUtils.when(ItemDisplayContext.GUI, ItemModelUtils.plainModel(flatModel)),
-                        ItemModelUtils.when(ItemDisplayContext.FIXED, ItemModelUtils.plainModel(flatModel))
+                        ItemModelUtils.plainModel(handModelZombieScythe),
+                        ItemModelUtils.when(ItemDisplayContext.GUI, ItemModelUtils.plainModel(flatModelZombieScythe)),
+                        ItemModelUtils.when(ItemDisplayContext.FIXED, ItemModelUtils.plainModel(flatModelZombieScythe))
+                )
+        );
+
+        Identifier flatModelCane = itemModelGenerator.createFlatItemModel(ModItems.CANE, ModelTemplates.FLAT_ITEM);
+
+        Identifier handModelCane = Identifier.fromNamespaceAndPath(Guns.MOD_ID, "item/cane_hand");
+
+        itemModelGenerator.itemModelOutput.accept(
+                ModItems.CANE,
+                ItemModelUtils.select(
+                        new DisplayContext(),
+                        ItemModelUtils.plainModel(handModelCane),
+                        ItemModelUtils.when(ItemDisplayContext.GUI, ItemModelUtils.plainModel(flatModelCane)),
+                        ItemModelUtils.when(ItemDisplayContext.FIXED, ItemModelUtils.plainModel(flatModelCane))
+                )
+        );
+
+        Identifier flatModelNinjaStar = itemModelGenerator.createFlatItemModel(ModItems.NINJA_STAR, ModelTemplates.FLAT_ITEM);
+
+        Identifier handModelNinjaStar = Identifier.fromNamespaceAndPath(Guns.MOD_ID, "item/ninja_star_hand");
+
+        itemModelGenerator.itemModelOutput.accept(
+                ModItems.NINJA_STAR,
+                ItemModelUtils.select(
+                        new DisplayContext(),
+                        ItemModelUtils.plainModel(handModelNinjaStar),
+                        ItemModelUtils.when(ItemDisplayContext.GUI, ItemModelUtils.plainModel(flatModelNinjaStar)),
+                        ItemModelUtils.when(ItemDisplayContext.FIXED, ItemModelUtils.plainModel(flatModelNinjaStar))
                 )
         );
     }

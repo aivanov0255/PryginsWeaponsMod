@@ -11,6 +11,7 @@ import net.fabricmc.fabric.api.networking.v1.PlayerLookup;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.fabricmc.fabric.impl.client.rendering.AtlasRegistryImpl;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.particle.ParticleProvider;
 import net.minecraft.client.resources.model.sprite.Material;
 import net.minecraft.client.resources.model.sprite.SpriteId;
@@ -28,6 +29,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.Mth;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageSources;
@@ -36,6 +38,7 @@ import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.HumanoidArm;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.animal.fox.Fox;
 import net.minecraft.world.entity.player.Inventory;
@@ -56,7 +59,7 @@ import org.jspecify.annotations.Nullable;
 import java.util.*;
 import java.util.function.Consumer;
 
-public class ShotgunItem extends GunItem {
+public class ShotgunItem extends GunItem implements PoseHoldable{
 
     public ShotgunItem(Properties properties, GunProperties gunProperties, SoundEvent shootSound, float shakeIntensity, int shakeDuration) {
         super(properties, gunProperties, shootSound, shakeIntensity, shakeDuration);
@@ -234,6 +237,37 @@ public class ShotgunItem extends GunItem {
         }
 
         itemStack.set(ModComponents.SHOTGUN_CHAMBER, remaining);
+    }
+
+    @Override
+    public boolean posesOppositeArmWhenFree() {
+        return true;
+    }
+
+    @Override
+    public void applyHandPose(ModelPart arm, HumanoidArm armSide, ModelPart otherArm, ItemStack otherStack,
+                              InteractionHand hand, ItemStack stack) {
+
+        boolean drivingBothArms = otherStack.isEmpty();
+
+        ModelPart rightArm = armSide == HumanoidArm.RIGHT ? arm : otherArm;
+        ModelPart leftArm = armSide == HumanoidArm.RIGHT ? otherArm : arm;
+
+        float forwardPitch = -80.0F * Mth.DEG_TO_RAD;
+        float inwardYaw = 12.0F * Mth.DEG_TO_RAD;
+        float wristRoll = 6.0F * Mth.DEG_TO_RAD;
+
+        rightArm.xRot = forwardPitch;
+        rightArm.yRot = -inwardYaw;
+        rightArm.zRot = wristRoll;
+        rightArm.x = -3.5F;
+
+        if (drivingBothArms) {
+            leftArm.xRot = forwardPitch;
+            leftArm.yRot = inwardYaw;
+            leftArm.zRot = -wristRoll;
+            leftArm.x = 3.5F;
+        }
     }
 
     @Override

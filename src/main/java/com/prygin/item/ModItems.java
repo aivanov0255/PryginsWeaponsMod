@@ -214,16 +214,20 @@ public class ModItems {
 
     public static final Item SHOTGUN_AMMO = register("shotgun_ammo", Item::new, new Item.Properties().stacksTo(16).component(ModComponents.SHOTGUN_AMMO_PROPERTIES, new ShotgunAmmoProperties(0, 5, false, Optional.empty())));
 
-    public static final GunItem PISTOL = register("pistol", properties -> new GunItem(properties, new GunItem.GunProperties(
-            50.0f,
-            50,
-            10,
-            5,
-            Identifier.fromNamespaceAndPath(Guns.MOD_ID, "textures/effect/hit_decal.png"),
-            "default",
-            "default",
-            DEFAULT_DESTROY_BLOCKS
-    ), ModSounds.PISTOL_SHOOT, 2.0f, 5), new Item.Properties().component(ModComponents.AMMO, 50).component(DataComponents.MAX_STACK_SIZE, 1));
+    public static final GunItem PISTOL = register("pistol",
+            properties -> new GunItem(properties, new GunItem.GunProperties(
+                50.0f,
+                50,
+                10,
+                5,
+                Identifier.fromNamespaceAndPath(Guns.MOD_ID, "textures/effect/hit_decal.png"),
+                "default",
+                "default",
+                DEFAULT_DESTROY_BLOCKS
+            ), ModSounds.PISTOL_SHOOT, 2.0f, 5),
+            new Item.Properties()
+                    .component(ModComponents.AMMO, 50)
+                    .component(DataComponents.MAX_STACK_SIZE, 1));
 
     public static final AmmoItem PISTOL_AMMO = register("pistol_ammo", properties -> new AmmoItem(properties, PISTOL, ModSounds.PISTOL_RELOAD), new Item.Properties());
 

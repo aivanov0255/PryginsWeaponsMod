@@ -14,17 +14,22 @@ import com.geckolib.renderer.GeoItemRenderer;
 import com.geckolib.util.GeckoLibUtil;
 import com.prygin.Guns;
 import com.prygin.item.GunItem;
+import com.prygin.item.PoseHoldable;
 import com.prygin.item.components.ModComponents;
 import com.prygin.sounds.ModSounds;
 import net.fabricmc.fabric.api.networking.v1.PlayerLookup;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
+import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.Mth;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.HumanoidArm;
 import net.minecraft.world.entity.projectile.ShulkerBullet;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.EntityHitResult;
@@ -36,7 +41,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Consumer;
 
-public class ShulkerBlaster extends GunItem implements GeoItem {
+public class ShulkerBlaster extends GunItem implements GeoItem, PoseHoldable {
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 
     public static final String IDLE_CONTROLLER_NAME = "idle_controller";
@@ -173,5 +178,36 @@ public class ShulkerBlaster extends GunItem implements GeoItem {
     @Override
     public AnimatableInstanceCache getAnimatableInstanceCache() {
         return cache;
+    }
+
+    @Override
+    public boolean posesOppositeArmWhenFree() {
+        return true;
+    }
+
+    @Override
+    public void applyHandPose(ModelPart arm, HumanoidArm armSide, ModelPart otherArm, ItemStack otherStack,
+                              InteractionHand hand, ItemStack stack) {
+
+        boolean drivingBothArms = otherStack.isEmpty();
+
+        ModelPart rightArm = armSide == HumanoidArm.RIGHT ? arm : otherArm;
+        ModelPart leftArm = armSide == HumanoidArm.RIGHT ? otherArm : arm;
+
+        float forwardPitch = -80.0F * Mth.DEG_TO_RAD;
+        float inwardYaw = 12.0F * Mth.DEG_TO_RAD;
+        float wristRoll = 6.0F * Mth.DEG_TO_RAD;
+
+        rightArm.xRot = forwardPitch;
+        rightArm.yRot = -inwardYaw;
+        rightArm.zRot = wristRoll;
+        rightArm.x = -3.5F;
+
+        if (drivingBothArms) {
+            leftArm.xRot = forwardPitch;
+            leftArm.yRot = inwardYaw;
+            leftArm.zRot = -wristRoll;
+            leftArm.x = 3.5F;
+        }
     }
 }

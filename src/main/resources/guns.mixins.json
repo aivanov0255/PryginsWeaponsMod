@@ -14,7 +14,10 @@
     "CameraMixin",
     "ConditionalItemModelPropertiesAccessor",
     "RangeSelectItemModelPropertiesAccessor",
-    "ItemTintSourcesAccessor"
+    "ItemTintSourcesAccessor",
+    "HumanoidModelMixin",
+    "HumanoidRenderStateMixin",
+    "LivingEntityRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1

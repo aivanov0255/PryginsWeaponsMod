@@ -3,19 +3,23 @@ package com.prygin.item;
 import com.prygin.Guns;
 import com.prygin.entity.missle.MissleEntity;
 import com.prygin.sounds.ModSounds;
+import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.Mth;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.HumanoidArm;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.Vec3;
 
 import java.util.ArrayList;
 
-public class RocketLauncherItem extends GunItem {
+public class RocketLauncherItem extends GunItem implements PoseHoldable {
     public RocketLauncherItem(Properties properties, SoundEvent shootSound, float shakeIntensity, int shakeDuration) {
         super(properties, new GunProperties(0, 1, 100, 0, Identifier.fromNamespaceAndPath(Guns.MOD_ID, "textures/effect/hit_decal.png"), "default", "default", new ArrayList<>()), shootSound, shakeIntensity, shakeDuration);
     }
@@ -42,5 +46,17 @@ public class RocketLauncherItem extends GunItem {
         missle.setYRot(-owner.getYRot());
 
         level.addFreshEntity(missle);
+    }
+
+    @Override
+    public void applyHandPose(ModelPart arm, HumanoidArm armSide, ModelPart otherArm, ItemStack otherStack, InteractionHand hand, ItemStack stack) {
+        arm.xRot = -Mth.HALF_PI;
+        arm.yRot = 0.0F;
+        arm.zRot = 0.0F;
+    }
+
+    @Override
+    public boolean posesOppositeArmWhenFree() {
+        return false;
     }
 }

@@ -1,6 +1,8 @@
 package com.prygin.mixin;
 
 import com.prygin.common.ModAttachments;
+import com.prygin.entity.scythe_zombie.ScytheZombie;
+import com.prygin.item.ZombieScythe;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityType;
@@ -26,10 +28,12 @@ public abstract class ZombieEmergeMixin extends Monster {
     private void onFinalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty,
                                  EntitySpawnReason spawnReason, SpawnGroupData spawnGroupData,
                                  CallbackInfoReturnable<SpawnGroupData> cir) {
-        this.setAttached(ModAttachments.EMERGING, true);
-        this.setAttached(ModAttachments.EMERGE_TICKS, 0);
-        this.setInvulnerable(true);
-        this.setNoAi(true);
+        if (this.asLivingEntity() instanceof ScytheZombie) {
+            this.setAttached(ModAttachments.EMERGING, true);
+            this.setAttached(ModAttachments.EMERGE_TICKS, 0);
+            this.setInvulnerable(true);
+            this.setNoAi(true);
+        }
     }
 
     @Inject(method = "tick", at = @At("HEAD"))

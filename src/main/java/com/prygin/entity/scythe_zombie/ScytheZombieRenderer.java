@@ -1,6 +1,7 @@
 package com.prygin.entity.scythe_zombie;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import com.prygin.Guns;
 import com.prygin.item.ZombieScythe;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -8,6 +9,8 @@ import net.minecraft.client.renderer.entity.ZombieRenderer;
 import net.minecraft.client.renderer.entity.state.ZombieRenderState;
 import net.minecraft.client.renderer.rendertype.RenderTypes;
 import net.minecraft.client.renderer.state.level.CameraRenderState;
+import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.ColorRGBA;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.monster.zombie.Zombie;
@@ -15,6 +18,9 @@ import net.minecraft.world.entity.monster.zombie.Zombie;
 import java.awt.*;
 
 public class ScytheZombieRenderer extends ZombieRenderer {
+
+    private static final Identifier TEXTURE =
+            Identifier.fromNamespaceAndPath(Guns.MOD_ID, "textures/entity/scythe_zombie.png");
 
     Color timerColor = new Color(94, 151, 255);
     Color timerColorOther = new Color(25, 107, 255);
@@ -30,6 +36,11 @@ public class ScytheZombieRenderer extends ZombieRenderer {
     @Override
     public ZombieRenderState createRenderState() {
         return new ScytheZombieRenderState();
+    }
+
+    @Override
+    public Identifier getTextureLocation(ZombieRenderState state) {
+        return TEXTURE;
     }
 
     @Override

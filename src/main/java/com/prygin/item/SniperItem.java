@@ -6,14 +6,17 @@ import com.prygin.screenshake.ScreenShakePayload;
 import com.prygin.zoom.ZoomManager;
 import net.fabricmc.fabric.api.networking.v1.PlayerLookup;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
+import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.HumanoidArm;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -26,7 +29,7 @@ import org.jspecify.annotations.Nullable;
 
 import java.util.Objects;
 
-public class SniperItem extends GunItem {
+public class SniperItem extends GunItem implements PoseHoldable {
     boolean isZoomed = false;
 
     public SniperItem(Properties properties, GunProperties gunProperties, SoundEvent shootSound, float shakeIntensity, int shakeDuration) {
@@ -68,5 +71,36 @@ public class SniperItem extends GunItem {
 
     public static LivingEntity asLivingOwner(Entity owner) {
         return owner instanceof LivingEntity livingOwner ? livingOwner : null;
+    }
+
+    @Override
+    public boolean posesOppositeArmWhenFree() {
+        return true;
+    }
+
+    @Override
+    public void applyHandPose(ModelPart arm, HumanoidArm armSide, ModelPart otherArm, ItemStack otherStack,
+                              InteractionHand hand, ItemStack stack) {
+
+        boolean drivingBothArms = otherStack.isEmpty();
+
+        ModelPart rightArm = armSide == HumanoidArm.RIGHT ? arm : otherArm;
+        ModelPart leftArm = armSide == HumanoidArm.RIGHT ? otherArm : arm;
+
+        float forwardPitch = -80.0F * Mth.DEG_TO_RAD;
+        float inwardYaw = 12.0F * Mth.DEG_TO_RAD;
+        float wristRoll = 6.0F * Mth.DEG_TO_RAD;
+
+        rightArm.xRot = forwardPitch;
+        rightArm.yRot = -inwardYaw;
+        rightArm.zRot = wristRoll;
+        rightArm.x = -3.5F;
+
+        if (drivingBothArms) {
+            leftArm.xRot = forwardPitch;
+            leftArm.yRot = inwardYaw;
+            leftArm.zRot = -wristRoll;
+            leftArm.x = 3.5F;
+        }
     }
 }
