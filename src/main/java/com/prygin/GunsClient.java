@@ -7,6 +7,7 @@ import com.prygin.block.block_entity.SkyBlockEntityRenderer;
 import com.prygin.entity.ModEntityTypes;
 import com.prygin.entity.battle_axe.BattleAxeEntity;
 import com.prygin.entity.battle_axe.BattleAxeModel;
+import com.prygin.entity.boomerang.BoomerangRenderer;
 import com.prygin.entity.missle.MissleEntity;
 import com.prygin.entity.missle.MissleModel;
 import com.prygin.entity.nijastar.NinjaStarEntity;
@@ -113,6 +114,7 @@ public class GunsClient implements ClientModInitializer {
         BlockEntityRenderers.register(ModBlockEntities.RECHARGER, RechargerBlockEntityRenderer::new);
 
         EntityRendererRegistry.register(ModEntityTypes.PLANE, (context -> new PlaneRenderer<>(context, Identifier.fromNamespaceAndPath(Guns.MOD_ID, "simple_plane"))));
+        EntityRendererRegistry.register(ModEntityTypes.BOOMERANG, (context -> new BoomerangRenderer<>(context, Identifier.fromNamespaceAndPath(Guns.MOD_ID, "boomerang"))));
 
         MenuScreens.register(ModMenuTypes.RECHARGER, RechargerScreen::new);
         MenuScreens.register(ModMenuTypes.SHOTGUN_CHAMBER, ShotgunChamberScreen::new);

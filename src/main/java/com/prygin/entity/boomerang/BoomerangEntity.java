@@ -19,12 +19,14 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
+import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.UUID;
 
 public class BoomerangEntity extends Entity implements GeoEntity {
-    private static final EntityDataAccessor<String> DATA_OWNER_ID = SynchedEntityData.defineId(AbstractTrap.class, EntityDataSerializers.STRING);
+    private static final EntityDataAccessor<String> DATA_OWNER_ID = SynchedEntityData.defineId(BoomerangEntity.class, EntityDataSerializers.STRING);
+    private static final EntityDataAccessor<Float> DATA_STARTING_ROT = SynchedEntityData.defineId(BoomerangEntity.class, EntityDataSerializers.FLOAT);
 
     public static final RawAnimation SPIN_ANIM = RawAnimation.begin().then("spin", LoopType.LOOP);
 
@@ -43,6 +45,14 @@ public class BoomerangEntity extends Entity implements GeoEntity {
         return UUID.fromString(this.entityData.get(DATA_OWNER_ID));
     }
 
+    public float getStartingRot() {
+        return this.entityData.get(DATA_STARTING_ROT);
+    }
+
+    public void setStartingRot(float startingRot) {
+        this.entityData.set(DATA_STARTING_ROT, startingRot);
+    }
+
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
         controllers.add(
@@ -57,12 +67,19 @@ public class BoomerangEntity extends Entity implements GeoEntity {
 
     @Override
     public void tick() {
-        
+        Entity owner = level().getEntity(getOwnerId());
+
+        double x = Math.cos(tickCount) + owner.getX() - Math.sin(getStartingRot());
+        double y = owner.getY();
+        double z = Math.sin(tickCount) + owner.getZ() - Math.cos(getStartingRot());
+
+        snapTo(x, y, z);
     }
 
     @Override
     protected void defineSynchedData(SynchedEntityData.Builder entityData) {
         entityData.define(DATA_OWNER_ID, UUID.randomUUID().toString());
+        entityData.define(DATA_STARTING_ROT, 0f);
     }
 
     @Override
@@ -73,10 +90,12 @@ public class BoomerangEntity extends Entity implements GeoEntity {
     @Override
     protected void readAdditionalSaveData(ValueInput input) {
         setOwnerId(UUID.fromString(input.getString("Owner").get()));
+        setStartingRot(input.getFloatOr("StartingRot", 0));
     }
 
     @Override
     protected void addAdditionalSaveData(ValueOutput output) {
         output.putString("Owner", this.getOwnerId().toString());
+        output.putFloat("StartingRot", getStartingRot());
     }
 }

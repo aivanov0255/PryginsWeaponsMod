@@ -2,6 +2,7 @@ package com.prygin.entity;
 
 import com.prygin.Guns;
 import com.prygin.entity.battle_axe.BattleAxeEntity;
+import com.prygin.entity.boomerang.BoomerangEntity;
 import com.prygin.entity.missle.MissleEntity;
 import com.prygin.entity.nijastar.NinjaStarEntity;
 import com.prygin.entity.plane.Plane;
@@ -144,6 +145,13 @@ public class ModEntityTypes {
                     .sized(5, 5)
                     .clientTrackingRange(10)
                     .updateInterval(1)
+    );
+
+    public static final EntityType<BoomerangEntity> BOOMERANG = register(
+            "boomerang",
+            EntityType.Builder.<BoomerangEntity>of(BoomerangEntity::new, MobCategory.MISC)
+                    .sized(1, 1)
+                    .clientTrackingRange(10)
     );
 
     private static <T extends Entity> EntityType<T> register(String name, EntityType.Builder<T> builder) {
