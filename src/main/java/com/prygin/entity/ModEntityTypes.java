@@ -3,6 +3,7 @@ package com.prygin.entity;
 import com.prygin.Guns;
 import com.prygin.entity.battle_axe.BattleAxeEntity;
 import com.prygin.entity.boomerang.BoomerangEntity;
+import com.prygin.entity.hook.HookEntity;
 import com.prygin.entity.missle.MissleEntity;
 import com.prygin.entity.nijastar.NinjaStarEntity;
 import com.prygin.entity.plane.Plane;
@@ -137,6 +138,11 @@ public class ModEntityTypes {
     public static final EntityType<MissleEntity> MISSLE = register(
             "missle",
             EntityType.Builder.<MissleEntity>of(MissleEntity::new, MobCategory.AMBIENT).sized(1f, 1f)
+    );
+
+    public static final EntityType<HookEntity> HOOK = register(
+            "hook",
+            EntityType.Builder.<HookEntity>of(HookEntity::new, MobCategory.AMBIENT).sized(0.4f, 0.4f)
     );
 
     public static final EntityType<Plane> PLANE = register(

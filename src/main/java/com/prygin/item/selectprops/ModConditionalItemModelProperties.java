@@ -11,6 +11,7 @@ public class ModConditionalItemModelProperties {
     public static void bootstrap() {
         var mapper = ConditionalItemModelPropertiesAccessor.getIdMapper();
         mapper.put(Identifier.fromNamespaceAndPath(Guns.MOD_ID, "status_effect_exists"), StatusEffectExists.MAP_CODEC);
+        mapper.put(Identifier.fromNamespaceAndPath(Guns.MOD_ID, "has_hook"), HasHook.MAP_CODEC);
         mapper.put(Identifier.fromNamespaceAndPath(Guns.MOD_ID, "teleport_random"), TeleportRandom.MAP_CODEC);
     }
 }

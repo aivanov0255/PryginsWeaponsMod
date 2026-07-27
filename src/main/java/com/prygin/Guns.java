@@ -241,36 +241,27 @@ public class Guns implements ModInitializer {
 	}
 
 	public static void breakBlockLikePlayer(Level level, BlockPos pos, Entity entity) {
-		System.out.println("breakBlockLikePlayer called, level.isClientSide=" + level.isClientSide());
 
 		if (!(level instanceof ServerLevel serverLevel)) {
-			System.out.println("Not a ServerLevel, bailing");
 			return;
 		}
 
 		BlockState state = level.getBlockState(pos);
 
 		if (state.isAir()) {
-			System.out.println("Block is air, bailing");
 			return;
 		}
 
 		if (entity instanceof ServerPlayer serverPlayer) {
-			System.out.println("Entity is ServerPlayer, checking break event");
-
 			boolean allowed = net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents.BEFORE
 					.invoker()
 					.beforeBlockBreak(level, serverPlayer, pos, state, null);
-
-			System.out.println("Break event allowed: " + allowed);
 
 			if (!allowed) return;
 
 			state.getBlock().playerWillDestroy(level, pos, state, serverPlayer);
 
 			boolean removed = level.removeBlock(pos, false);
-
-			System.out.println("removeBlock returned: " + removed);
 
 			if (removed) {
 				// Spawn break particles + sound for all nearby clients (same event vanilla uses)
@@ -282,10 +273,8 @@ public class Guns implements ModInitializer {
 						.invoker()
 						.afterBlockBreak(level, serverPlayer, pos, state, level.getBlockEntity(pos));
 
-				System.out.println("Block destroyed successfully");
 			}
 		} else {
-			System.out.println("Entity is NOT ServerPlayer, it's: " + entity.getClass());
 
 			boolean removed = serverLevel.destroyBlock(pos, true, entity);
 

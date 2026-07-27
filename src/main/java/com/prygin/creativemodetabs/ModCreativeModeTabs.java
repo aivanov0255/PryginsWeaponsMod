@@ -133,6 +133,10 @@ public class ModCreativeModeTabs {
 
                 output.accept(ModBlocks.RANGED_DETONATOR);
                 output.accept(ModItems.DETONATOR);
+
+                output.accept(ModItems.BOOMERANG);
+
+                output.accept(ModItems.GRAPPLING_HOOK);
             })
             .build();
 

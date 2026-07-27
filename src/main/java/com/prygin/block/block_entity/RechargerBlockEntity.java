@@ -73,7 +73,6 @@ public class RechargerBlockEntity extends BlockEntity implements Container, Menu
         if (itemStack.getCount() > getMaxStackSize()) {
             itemStack.setCount(getMaxStackSize());
         }
-        System.out.println("[DEBUG] setItem called, side=" + (level != null && level.isClientSide() ? "CLIENT" : "SERVER") + ", item=" + itemStack);
         setChanged();
     }
 
@@ -98,7 +97,6 @@ public class RechargerBlockEntity extends BlockEntity implements Container, Menu
         super.loadAdditional(input);
         items = NonNullList.withSize(getContainerSize(), ItemStack.EMPTY);
         ContainerHelper.loadAllItems(input, items);
-        System.out.println("[DEBUG] loadAdditional called, side=" + (level != null && level.isClientSide() ? "CLIENT" : "SERVER/UNKNOWN") + ", items=" + items);
     }
 
     @Override
@@ -116,7 +114,6 @@ public class RechargerBlockEntity extends BlockEntity implements Container, Menu
     public void setChanged() {
         super.setChanged();
         if (level != null && !level.isClientSide()) {
-            System.out.println("[DEBUG] setChanged -> sendBlockUpdated at " + worldPosition);
             BlockState state = getBlockState();
             level.sendBlockUpdated(worldPosition, state, state, Block.UPDATE_CLIENTS);
         }
@@ -131,7 +128,6 @@ public class RechargerBlockEntity extends BlockEntity implements Container, Menu
     @Override
     public CompoundTag getUpdateTag(HolderLookup.Provider registries) {
         CompoundTag tag = saveWithoutMetadata(registries);
-        System.out.println("[DEBUG] getUpdateTag called, tag=" + tag);
         return tag;
     }
 

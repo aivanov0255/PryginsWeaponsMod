@@ -8,6 +8,8 @@ import com.prygin.entity.ModEntityTypes;
 import com.prygin.entity.battle_axe.BattleAxeEntity;
 import com.prygin.entity.battle_axe.BattleAxeModel;
 import com.prygin.entity.boomerang.BoomerangRenderer;
+import com.prygin.entity.hook.HookEntity;
+import com.prygin.entity.hook.HookModel;
 import com.prygin.entity.missle.MissleEntity;
 import com.prygin.entity.missle.MissleModel;
 import com.prygin.entity.nijastar.NinjaStarEntity;
@@ -27,6 +29,8 @@ import com.prygin.item.shulker_blaster.ShulkerBlaster;
 import com.prygin.menu.ModMenuTypes;
 import com.prygin.rendering.HitDecalRenderer;
 import com.prygin.rendering.ScopeOverlay;
+import com.prygin.rope.RopeRenderTypes;
+import com.prygin.rope.RopeRenderer;
 import com.prygin.screens.AmmoBenchScreen;
 import com.prygin.screens.RechargerScreen;
 import com.prygin.screenshake.ScreenShakeManager;
@@ -91,6 +95,9 @@ public class GunsClient implements ClientModInitializer {
         EntityRendererRegistry.register(ModEntityTypes.MISSLE,
                 (context) -> new DirectionalProjectileRenderer<MissleEntity, ArrowRenderState>(context, new MissleModel()));
 
+        EntityRendererRegistry.register(ModEntityTypes.HOOK,
+                (context) -> new DirectionalProjectileRenderer<HookEntity, ArrowRenderState>(context, new HookModel()));
+
         EntityRendererRegistry.register(ModEntityTypes.BATTLE_AXE,
                 (context) -> new DirectionalProjectileRenderer<BattleAxeEntity, ArrowRenderState>(context, new BattleAxeModel()));
 
@@ -121,6 +128,7 @@ public class GunsClient implements ClientModInitializer {
         MenuScreens.register(ModMenuTypes.AMMO_BENCH_MENU, AmmoBenchScreen::new);
 
         ScopeOverlay.register();
+        RopeRenderer.register();
 
         ClientTooltipComponentCallback.EVENT.register(data -> {
             if (data instanceof ShotgunChamberTooltip chamber) {

@@ -26,7 +26,6 @@ public abstract class ZombieEmergeDataMixin extends Monster {
 
     @Inject(method = "defineSynchedData", at = @At("TAIL"))
     private void onDefineSynchedData(SynchedEntityData.Builder builder, CallbackInfo ci) {
-        System.out.println("[EmergeDebug] defineSynchedData injected");
         builder.define(EMERGING, false);
     }
 }

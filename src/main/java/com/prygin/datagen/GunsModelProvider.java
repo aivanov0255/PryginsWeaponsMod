@@ -6,10 +6,7 @@ import com.prygin.block.ModBlocks;
 import com.prygin.item.ModItems;
 import com.prygin.item.components.ModComponents;
 import com.prygin.item.components.ShotgunAmmoProperties;
-import com.prygin.item.selectprops.ExplosionRange;
-import com.prygin.item.selectprops.StatusEffect;
-import com.prygin.item.selectprops.StatusEffectExists;
-import com.prygin.item.selectprops.TeleportRandom;
+import com.prygin.item.selectprops.*;
 import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.minecraft.client.color.item.ItemTintSource;
@@ -22,6 +19,7 @@ import net.minecraft.client.data.models.model.TextureSlot;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.item.ItemModel;
 import net.minecraft.client.renderer.item.properties.conditional.Broken;
+import net.minecraft.client.renderer.item.properties.conditional.HasComponent;
 import net.minecraft.client.renderer.item.properties.numeric.Count;
 import net.minecraft.client.renderer.item.properties.select.DisplayContext;
 import net.minecraft.client.renderer.item.properties.select.SelectItemModelProperties;
@@ -178,6 +176,18 @@ public class GunsModelProvider extends FabricModelProvider {
                         ItemModelUtils.plainModel(handModelLeafBlower),
                         ItemModelUtils.when(ItemDisplayContext.GUI, ItemModelUtils.plainModel(flatModelLeafBlower)),
                         ItemModelUtils.when(ItemDisplayContext.FIXED, ItemModelUtils.plainModel(flatModelLeafBlower))
+                )
+        );
+
+        Identifier hasHookModel = Identifier.fromNamespaceAndPath(Guns.MOD_ID, "item/grappling_hook_full");
+        Identifier noHookModel = Identifier.fromNamespaceAndPath(Guns.MOD_ID, "item/grappling_hook_empty");
+
+        itemModelGenerator.itemModelOutput.accept(
+                ModItems.GRAPPLING_HOOK,
+                ItemModelUtils.conditional(
+                        new HasHook(),
+                        ItemModelUtils.plainModel(hasHookModel),
+                        ItemModelUtils.plainModel(noHookModel)
                 )
         );
     }

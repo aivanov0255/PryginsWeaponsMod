@@ -458,6 +458,12 @@ public class ModItems {
             new Item.Properties().stacksTo(1)
     );
 
+    public static GrapplingHookItem GRAPPLING_HOOK = register(
+            "grappling_hook",
+            GrapplingHookItem::new,
+            new Item.Properties().stacksTo(1)
+    );
+
     public static <T extends Item> T register(String name, Function<Item.Properties, T> itemFactory, Item.Properties settings) {
         ResourceKey<Item> itemKey = ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(Guns.MOD_ID, name));
 

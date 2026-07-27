@@ -116,11 +116,6 @@ public abstract class CornerIconMixin {
 
         if (key == null) return null;
 
-        System.out.println(Identifier.fromNamespaceAndPath(
-                key.getNamespace(),
-                "textures/entity/" + key.getPath() + ".png"
-        ));
-
         return Identifier.fromNamespaceAndPath(
                 key.getNamespace(),
                 "textures/entity/" + key.getPath() + ".png"

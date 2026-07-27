@@ -1,5 +1,6 @@
 package com.prygin.datagen;
 
+import com.prygin.entity.ModEntityTypes;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.minecraft.core.HolderLookup;
@@ -13,6 +14,7 @@ public class GunsEnglishLangProvider extends FabricLanguageProvider {
 
     @Override
     public void generateTranslations(HolderLookup.Provider holderLookup, TranslationBuilder translationBuilder) {
+        // Items
         translationBuilder.add("item.guns.ammo.info", "%1$s ammo in chamber.");
 
         translationBuilder.add("item.guns.fuse.info", "%1$s seconds");
@@ -76,9 +78,30 @@ public class GunsEnglishLangProvider extends FabricLanguageProvider {
         translationBuilder.add("item.guns.boomerang", "Boomerang");
 
         translationBuilder.add("item.guns.hook", "Hook");
+        translationBuilder.add("item.guns.grappling_hook", "Grappling Hook");
 
         translationBuilder.add("item.guns.breeze_basher", "Breeze Basher");
 
+        // Entities
+        translationBuilder.add(ModEntityTypes.SCYTHE_ZOMBIE, "Scythe Zombie");
+        translationBuilder.add(ModEntityTypes.SHOCKWAVE, "Shockwave");
+        translationBuilder.add(ModEntityTypes.NINJA_STAR, "Ninja Star");
+        translationBuilder.add(ModEntityTypes.BATTLE_AXE, "Battle Axe");
+        translationBuilder.add(ModEntityTypes.SPIKE_TRAP, "Spike Trap");
+        translationBuilder.add(ModEntityTypes.SLOWNESS_TRAP, "Slowness Trap");
+        translationBuilder.add(ModEntityTypes.POISON_TRAP, "Poison Trap");
+        translationBuilder.add(ModEntityTypes.BLINDNESS_TRAP, "Blindness Trap");
+        translationBuilder.add(ModEntityTypes.GLOWING_TRAP, "Glowing Trap");
+        translationBuilder.add(ModEntityTypes.CREEPER_TRAP, "Creeper Trap");
+        translationBuilder.add(ModEntityTypes.SILVERFISH_TRAP, "Silverfish Trap");
+        translationBuilder.add(ModEntityTypes.TNT_TRAP, "TNT Trap");
+        translationBuilder.add(ModEntityTypes.GRANADE, "Grenade");
+        translationBuilder.add(ModEntityTypes.MISSLE, "Missile");
+        translationBuilder.add(ModEntityTypes.HOOK, "Hook");
+        translationBuilder.add(ModEntityTypes.PLANE, "Plane");
+        translationBuilder.add(ModEntityTypes.BOOMERANG, "Boomerang");
+
+        // Blocks
         translationBuilder.add("block.guns.titanium_block", "Block of Titanium");
 
         translationBuilder.add("block.guns.acacia_floor_board", "Acacia Floor Board");
@@ -99,6 +122,7 @@ public class GunsEnglishLangProvider extends FabricLanguageProvider {
         translationBuilder.add("block.guns.ammo_bench", "Ammo Workbench");
         translationBuilder.add("block.guns.ranged_detonator", "Ranged Detonator");
 
+        // Creative Tabs
         translationBuilder.add("creativeTab.guns", "Guns");
         translationBuilder.add("creativeTab.melee", "Melee");
         translationBuilder.add("creativeTab.ranged", "Ranged");
@@ -106,14 +130,32 @@ public class GunsEnglishLangProvider extends FabricLanguageProvider {
         translationBuilder.add("creativeTab.traps", "Traps");
         translationBuilder.add("creativeTab.misc", "Misc");
 
+        // Menus / Containers
         translationBuilder.add("container.recharger", "Recharger");
         translationBuilder.add("container.ammobench", "Ammo Workbench");
         translationBuilder.add("menu.shotgun_chamber", "Shotgun");
 
+        // Tooltips
         translationBuilder.add("tooltip.guns.explode_range", "Explosion Power: %1$s");
         translationBuilder.add("tooltip.guns.hit_damage", "Damage: %1$s");
         translationBuilder.add("tooltip.guns.teleport_target_randomly", "Teleports Target Randomly");
         translationBuilder.add("tooltip.guns.status_effect", "Potion Effects: ");
         translationBuilder.add("tooltip.guns.binded_position", "Binded Detonators:");
+
+        // Sounds
+        translationBuilder.add("sound.guns.pistol", "Gun Shoots");
+        translationBuilder.add("sound.guns.pistol_reload", "Gun Reloads");
+
+        translationBuilder.add("sound.guns.minigun", "Minigun Shoots");
+
+        translationBuilder.add("sound.guns.watergun", "Water Gun Shoots");
+        translationBuilder.add("sound.guns.watergun_reload", "Water Gun Reloads");
+
+        translationBuilder.add("sound.guns.cyber_cannon", "Cyber Cannon Shoots");
+
+        translationBuilder.add("sound.guns.ninja_star_hit", "Ninja Star Lands");
+
+        translationBuilder.add("sound.guns.rocket_launcher_shoot", "Rocket Launcher Shoots");
+        translationBuilder.add("sound.guns.rocket_launcher_load", "Rocket Launcher Loads");
     }
 }
