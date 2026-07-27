@@ -452,6 +452,12 @@ public class ModItems {
             new Item.Properties().stacksTo(1)
     );
 
+    public static Item HOOK = register(
+            "hook",
+            Item::new,
+            new Item.Properties().stacksTo(1)
+    );
+
     public static <T extends Item> T register(String name, Function<Item.Properties, T> itemFactory, Item.Properties settings) {
         ResourceKey<Item> itemKey = ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(Guns.MOD_ID, name));
 

@@ -1,0 +1,26 @@
+{
+  "model": {
+    "type": "minecraft:select",
+    "cases": [
+      {
+        "model": {
+          "type": "minecraft:model",
+          "model": "guns:item/vacuum"
+        },
+        "when": "gui"
+      },
+      {
+        "model": {
+          "type": "minecraft:model",
+          "model": "guns:item/vacuum"
+        },
+        "when": "fixed"
+      }
+    ],
+    "fallback": {
+      "type": "minecraft:model",
+      "model": "guns:item/vacuum_hand"
+    },
+    "property": "minecraft:display_context"
+  }
+}

@@ -73,6 +73,10 @@ public class GunsEnglishLangProvider extends FabricLanguageProvider {
         translationBuilder.add("item.guns.granade", "Grenade");
         translationBuilder.add("item.guns.detonator", "Detonator");
 
+        translationBuilder.add("item.guns.boomerang", "Boomerang");
+
+        translationBuilder.add("item.guns.hook", "Hook");
+
         translationBuilder.add("item.guns.breeze_basher", "Breeze Basher");
 
         translationBuilder.add("block.guns.titanium_block", "Block of Titanium");

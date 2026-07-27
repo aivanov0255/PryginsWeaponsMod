@@ -65,6 +65,7 @@ public class GunsModelProvider extends FabricModelProvider {
         itemModelGenerator.generateFlatItem(ModItems.WATER_GUN_CARTRIDGE, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItems.SNIPER_AMMO, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItems.CANNED_FOOD, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.HOOK, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItems.GRANADE, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItems.DETONATOR, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItems.MISSLE, ModelTemplates.FLAT_ITEM);
@@ -149,6 +150,34 @@ public class GunsModelProvider extends FabricModelProvider {
                         ItemModelUtils.plainModel(handModelNinjaStar),
                         ItemModelUtils.when(ItemDisplayContext.GUI, ItemModelUtils.plainModel(flatModelNinjaStar)),
                         ItemModelUtils.when(ItemDisplayContext.FIXED, ItemModelUtils.plainModel(flatModelNinjaStar))
+                )
+        );
+
+        Identifier flatModelVacuum = itemModelGenerator.createFlatItemModel(ModItems.VACUUM, ModelTemplates.FLAT_ITEM);
+
+        Identifier handModelVacuum = Identifier.fromNamespaceAndPath(Guns.MOD_ID, "item/vacuum_hand");
+
+        itemModelGenerator.itemModelOutput.accept(
+                ModItems.VACUUM,
+                ItemModelUtils.select(
+                        new DisplayContext(),
+                        ItemModelUtils.plainModel(handModelVacuum),
+                        ItemModelUtils.when(ItemDisplayContext.GUI, ItemModelUtils.plainModel(flatModelVacuum)),
+                        ItemModelUtils.when(ItemDisplayContext.FIXED, ItemModelUtils.plainModel(flatModelVacuum))
+                )
+        );
+
+        Identifier flatModelLeafBlower = itemModelGenerator.createFlatItemModel(ModItems.LEAF_BLOWER, ModelTemplates.FLAT_ITEM);
+
+        Identifier handModelLeafBlower = Identifier.fromNamespaceAndPath(Guns.MOD_ID, "item/leafblower_hand");
+
+        itemModelGenerator.itemModelOutput.accept(
+                ModItems.LEAF_BLOWER,
+                ItemModelUtils.select(
+                        new DisplayContext(),
+                        ItemModelUtils.plainModel(handModelLeafBlower),
+                        ItemModelUtils.when(ItemDisplayContext.GUI, ItemModelUtils.plainModel(flatModelLeafBlower)),
+                        ItemModelUtils.when(ItemDisplayContext.FIXED, ItemModelUtils.plainModel(flatModelLeafBlower))
                 )
         );
     }

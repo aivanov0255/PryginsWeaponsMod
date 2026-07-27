@@ -1,0 +1,26 @@
+{
+  "model": {
+    "type": "minecraft:select",
+    "cases": [
+      {
+        "model": {
+          "type": "minecraft:model",
+          "model": "guns:item/leafblower"
+        },
+        "when": "gui"
+      },
+      {
+        "model": {
+          "type": "minecraft:model",
+          "model": "guns:item/leafblower"
+        },
+        "when": "fixed"
+      }
+    ],
+    "fallback": {
+      "type": "minecraft:model",
+      "model": "guns:item/leafblower_hand"
+    },
+    "property": "minecraft:display_context"
+  }
+}

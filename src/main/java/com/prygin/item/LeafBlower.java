@@ -69,7 +69,7 @@ public class LeafBlower extends Item implements Chargable, PoseHoldable {
         itemStack.set(ModComponents.AMMO, itemStack.get(ModComponents.AMMO) - 1);
 
         Vec3 startPos = owner.getEyePosition();
-        Vec3 endPos = owner.getEyePosition().add(owner.getLookAngle().scale(10));
+        Vec3 endPos = owner.getEyePosition().add(owner.getLookAngle().scale(12));
 
         HitResult hitResult = Guns.raycast(level, startPos, endPos, owner, new ArrayList<>());
 

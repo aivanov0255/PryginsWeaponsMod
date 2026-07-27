@@ -183,6 +183,7 @@ public class ModCreativeModeTabs {
             .title(Component.translatable("creativeTab.misc"))
             .displayItems((params, output) -> {
                 output.accept(ModItems.CANNED_FOOD);
+                output.accept(ModItems.HOOK);
             })
             .build();
 

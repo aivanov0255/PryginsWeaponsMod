@@ -1,8 +1,0 @@
-{
-  "model": {
-    "type": "minecraft:model",
-    "model": "guns:item/leafblower"
-  },
-  "hand_animation_on_swap": false,
-  "oversized_in_gui": false
-}
