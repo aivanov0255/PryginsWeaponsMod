@@ -33,7 +33,6 @@ public class GrapplingHookItem extends Item implements PoseHoldable {
         boolean hasHook = Boolean.TRUE.equals(stack.get(ModComponents.HAS_HOOK));
 
         if (hasHook) {
-            // STATE 1: Hook is ready -> Shoot the hook
             if (!level.isClientSide()) {
                 stack.set(ModComponents.HAS_HOOK, false);
 
@@ -56,7 +55,8 @@ public class GrapplingHookItem extends Item implements PoseHoldable {
 
                 level.addFreshEntity(hook);
 
-                RopeManager.createRope(hook,
+                RopeManager.createRope(
+                        hook,
                         player,
                         Identifier.fromNamespaceAndPath(Guns.MOD_ID, "textures/rope/grappling_hook_rope.png"),
                         0.5f, 0.5f, 1, 16
@@ -67,7 +67,6 @@ public class GrapplingHookItem extends Item implements PoseHoldable {
             }
             return InteractionResult.SUCCESS;
         } else {
-            // STATE 2: Hook is deployed -> Start reeling in
             player.startUsingItem(hand);
             return InteractionResult.CONSUME;
         }

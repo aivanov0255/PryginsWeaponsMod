@@ -54,6 +54,9 @@ public class GunsModelProvider extends FabricModelProvider {
         blockModelGenerator.createTrivialCube(ModBlocks.CHERRY_FLOOR_FLOOR_BOARD_BLOCK);
         blockModelGenerator.createTrivialCube(ModBlocks.CRIMSON_FLOOR_BOARD_BLOCK);
         blockModelGenerator.createTrivialCube(ModBlocks.WARPED_FLOOR_BOARD_BLOCK);
+
+        blockModelGenerator.createTrivialCube(ModBlocks.TEMPORARY_POPUP_WALL);
+        blockModelGenerator.createTrivialCube(ModBlocks.POPUP_WALL);
     }
 
     @Override

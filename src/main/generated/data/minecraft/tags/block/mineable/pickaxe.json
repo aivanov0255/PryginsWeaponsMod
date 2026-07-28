@@ -1,6 +1,8 @@
 {
   "values": [
     "guns:recharger",
-    "guns:recharger"
+    "guns:recharger",
+    "guns:popup_wall",
+    "guns:temporary_popup_wall"
   ]
 }

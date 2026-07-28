@@ -17,10 +17,14 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
     protected void addTags(HolderLookup.Provider registries) {
         builder(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(ModBlocks.RECHARGER.properties().blockId())
-                .add(ModBlocks.RECHARGER.properties().blockId());
+                .add(ModBlocks.RECHARGER.properties().blockId())
+                .add(ModBlocks.POPUP_WALL.properties().blockId())
+                .add(ModBlocks.TEMPORARY_POPUP_WALL.properties().blockId());
 
         builder(BlockTags.NEEDS_STONE_TOOL)
                 .add(ModBlocks.RECHARGER.properties().blockId())
-                .add(ModBlocks.TITANIUM_BLOCK.properties().blockId());
+                .add(ModBlocks.TITANIUM_BLOCK.properties().blockId())
+                .add(ModBlocks.POPUP_WALL.properties().blockId())
+                .add(ModBlocks.TEMPORARY_POPUP_WALL.properties().blockId());
     }
 }

@@ -79,6 +79,20 @@ public class ModBlocks {
             true
     );
 
+    public static final Block POPUP_WALL = register(
+            "popup_wall",
+            PopupWallBlock::new,
+            BlockBehaviour.Properties.of().requiresCorrectToolForDrops().strength(1.5F, 6.0F).sound(SoundType.IRON),
+            true
+    );
+
+    public static final Block TEMPORARY_POPUP_WALL = register(
+            "temporary_popup_wall",
+            TemporaryPopupWall::new,
+            BlockBehaviour.Properties.of().requiresCorrectToolForDrops().strength(1.5F, 6.0F).sound(SoundType.IRON),
+            false
+    );
+
     private static Block register(String name, Function<BlockBehaviour.Properties, Block> blockFactory, BlockBehaviour.Properties properties, boolean shouldRegisterItem) {
         ResourceKey<Block> blockKey = keyOfBlock(name);
         Block block = blockFactory.apply(properties.setId(blockKey));

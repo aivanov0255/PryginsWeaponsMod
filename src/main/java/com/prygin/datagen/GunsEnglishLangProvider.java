@@ -115,12 +115,19 @@ public class GunsEnglishLangProvider extends FabricLanguageProvider {
         translationBuilder.add("block.guns.pale_oak_floor_board", "Pale Oak Floor Board");
         translationBuilder.add("block.guns.spruce_floor_board", "Spruce Floor Board");
         translationBuilder.add("block.guns.warped_floor_board", "Warped Floor Board");
+
         translationBuilder.add("block.guns.recharger", "Recharger");
+
         translationBuilder.add("block.guns.sky_day_block", "Fake Day Sky");
         translationBuilder.add("block.guns.sky_sunset_block", "Fake Sunset Sky");
         translationBuilder.add("block.guns.sky_night_block", "Fake Night Sky");
+
         translationBuilder.add("block.guns.ammo_bench", "Ammo Workbench");
+
         translationBuilder.add("block.guns.ranged_detonator", "Ranged Detonator");
+
+        translationBuilder.add("block.guns.temporary_popup_wall", "Temporary Popup Wall");
+        translationBuilder.add("block.guns.popup_wall", "Popup Wall");
 
         // Creative Tabs
         translationBuilder.add("creativeTab.guns", "Guns");

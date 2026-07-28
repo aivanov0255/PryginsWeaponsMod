@@ -29,6 +29,8 @@ import com.prygin.item.shulker_blaster.ShulkerBlaster;
 import com.prygin.menu.ModMenuTypes;
 import com.prygin.rendering.HitDecalRenderer;
 import com.prygin.rendering.ScopeOverlay;
+import com.prygin.rope.ClientboundRopePayload;
+import com.prygin.rope.RopeManager;
 import com.prygin.rope.RopeRenderTypes;
 import com.prygin.rope.RopeRenderer;
 import com.prygin.screens.AmmoBenchScreen;
@@ -58,6 +60,16 @@ import net.minecraft.world.phys.HitResult;
 public class GunsClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
+        ClientPlayNetworking.registerGlobalReceiver(
+                ClientboundRopePayload.TYPE, (payload, context) -> {
+                    if (payload.createType() == ClientboundRopePayload.CreateType.CREATE) {
+                        RopeManager.createRopeNonSync(payload.rope());
+                    } else {
+                        RopeManager.removeRopeNonSync(payload.rope());
+                    }
+                }
+        );
+
         ClientPlayNetworking.registerGlobalReceiver(ClientboundShootPayload.TYPE, (payload, context) -> {
             GunItem.GunProperties props = payload.props();
             HitResult hit = payload.hit();

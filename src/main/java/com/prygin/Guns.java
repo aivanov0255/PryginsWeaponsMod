@@ -9,11 +9,13 @@ import com.prygin.item.*;
 import com.prygin.item.components.ModComponents;
 import com.prygin.item.shulker_blaster.AmmoSyncPayload;
 import com.prygin.menu.ModMenuTypes;
+import com.prygin.rope.ClientboundRopePayload;
 import com.prygin.screenshake.ScreenShakePayload;
 import com.prygin.sounds.ModSounds;
 import com.prygin.trap.SpikeTrap;
 import net.fabricmc.api.ModInitializer;
 
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.fabricmc.fabric.api.item.v1.ItemComponentTooltipProviderRegistry;
 import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
@@ -22,6 +24,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.damagesource.DamageSource;
@@ -50,9 +53,19 @@ public class Guns implements ModInitializer {
 
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
+	public static MinecraftServer serverInstance;
+
 	@Override
 	public void onInitialize() {
-		PayloadTypeRegistry.clientboundPlay().register(AmmoSyncPayload.TYPE, AmmoSyncPayload.STREAM_CODEC);
+		PayloadTypeRegistry.clientboundPlay().register(
+				AmmoSyncPayload.TYPE,
+				AmmoSyncPayload.STREAM_CODEC
+		);
+
+		PayloadTypeRegistry.clientboundPlay().register(
+				ClientboundRopePayload.TYPE,
+				ClientboundRopePayload.STREAM_CODEC
+		);
 
 		PayloadTypeRegistry.clientboundPlay().register(
 				ClientboundShootPayload.TYPE,
@@ -114,6 +127,14 @@ public class Guns implements ModInitializer {
 					boolean applied = livingEntity.addEffect(effect);
 				}
 			});
+		});
+
+		ServerLifecycleEvents.SERVER_STARTED.register(server -> {
+			Guns.serverInstance = server;
+		});
+
+		ServerLifecycleEvents.SERVER_STOPPING.register(server -> {
+			Guns.serverInstance = null;
 		});
 
 		ModBlocks.initialize();

@@ -1,6 +1,8 @@
 {
   "values": [
     "guns:recharger",
-    "guns:titanium_block"
+    "guns:titanium_block",
+    "guns:popup_wall",
+    "guns:temporary_popup_wall"
   ]
 }

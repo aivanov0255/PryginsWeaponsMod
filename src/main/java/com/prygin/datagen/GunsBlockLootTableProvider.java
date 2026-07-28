@@ -27,5 +27,6 @@ public class GunsBlockLootTableProvider extends FabricBlockLootSubProvider {
         dropSelf(ModBlocks.PALE_OAK_FLOOR_BOARD_BLOCK);
         dropSelf(ModBlocks.SPRUCE_FLOOR_BOARD_BLOCK);
         dropSelf(ModBlocks.WARPED_FLOOR_BOARD_BLOCK);
+        dropSelf(ModBlocks.POPUP_WALL);
     }
 }
