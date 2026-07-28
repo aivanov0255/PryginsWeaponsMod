@@ -24,6 +24,7 @@ public class ModBlockEntities {
 
     public static final BlockEntityType<RechargerBlockEntity> RECHARGER =
             register("recharger", RechargerBlockEntity::new, ModBlocks.RECHARGER);
+    
     public static final BlockEntityType<BombBlockEntity> BOMB_BLOCK_ENTITY =
             register("bomb_block", BombBlockEntity::new, ModBlocks.BOMB_BLOCK);
 

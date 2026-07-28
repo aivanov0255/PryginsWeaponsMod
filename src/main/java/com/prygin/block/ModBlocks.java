@@ -30,7 +30,9 @@ public class ModBlocks {
     public static Block CHERRY_FLOOR_FLOOR_BOARD_BLOCK = register("cherry_floor_board", Block::new, BlockBehaviour.Properties.of().strength(2.0F, 3.0F).sound(SoundType.WOOD), true);
     public static Block CRIMSON_FLOOR_BOARD_BLOCK = register("crimson_floor_board", Block::new, BlockBehaviour.Properties.of().strength(2.0F, 3.0F).sound(SoundType.NETHER_WOOD), true);
     public static Block WARPED_FLOOR_BOARD_BLOCK = register("warped_floor_board", Block::new, BlockBehaviour.Properties.of().strength(2.0F, 3.0F).sound(SoundType.NETHER_WOOD), true);
+
     public static Block BOMB_BLOCK = register("bomb_block", BombBlock::new, BlockBehaviour.Properties.of(), true);
+
     public static final Block SKY_NIGHT_BLOCK = register(
             "sky_night_block",
             SkyNightBlock::new,
